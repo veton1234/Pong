@@ -1,0 +1,23 @@
+ww = 700
+wh = 500
+wind = display.set_mode((700,500))
+back = transform.scale(image.load('back1.png'),(ww,wh))
+p1 = Player('paddle.jpg', 30, 200, 100, 50, 5)
+p2 = Player('paddle.jpg', 600, 200, 100, 50, 5)
+ball = Player('ball.png',312,250,30,30,5)
+
+finish = False
+game = True
+while game:
+    for i in event.get():
+        if i.type == QUIT:
+            game = False
+    if not finish:
+        wind.blit(back,(0,0))
+        p1.reset()
+        p2.reset()
+        p1.update()
+        p2.update1()
+        ball.reset()
+        
+       display.update()
