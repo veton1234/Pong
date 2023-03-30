@@ -1,3 +1,36 @@
+from pygame import *
+from random import randint
+
+
+class Game(sprite.Sprite):
+    def __init__(self,imazh,px,py,pw,ph,speed):
+        super().__init__()
+        self.image = transform.scale(image.load(imazh),(ph,pw))
+        self.pw = pw
+        self.ph = ph
+        self.speed = speed
+        
+        self.rect = self.image.get_rect() 
+        self.rect.x = px
+        self.rect.y = py
+   
+    def reset(self):
+        wind.blit(self.image,(self.rect.x, self.rect.y))
+
+class Player(Game):
+    def update(self):
+        keys = key.get_pressed()
+        if keys [K_UP] and self.rect.y > 5: 
+            self.rect.y -= self.speed
+        if keys [K_DOWN] and self.rect.y < 600: 
+            self.rect.y += self.speed
+    def update1(self):
+        keys = key.get_pressed()
+        if keys [K_w] and self.rect.y > 5: 
+            self.rect.y -= self.speed
+        if keys [K_s] and self.rect.y < 600: 
+            self.rect.y += self.speed
+            
 ww = 700
 wh = 500
 wind = display.set_mode((700,500))
